@@ -22,7 +22,7 @@ I build booking, payments and healthtech platforms end to end, from API design t
 
 <img src="assets/sec-career.svg" alt="Career" width="100%"/>
 
-<img src="assets/timeline.svg" alt="Career timeline: Techibears Pvt Ltd, Senior Software Developer, Feb 2020 to Apr 2025. Serioton LLP (HAANAA), Software Engineer I, Jul to Aug 2025. SimStar Asia Ltd, Software Engineer II, Dec 2025 to present." width="100%"/>
+<img src="assets/timeline.svg" alt="Career timeline: Techibears Pvt Ltd, Senior Software Developer, Feb 2020 to Apr 2025. Codilar Technologies, Lead Software Engineer, May to Jun 2025. Serioton LLP (HAANAA), Software Engineer I, Jul to Aug 2025. Neosoft Pvt Ltd, Senior Software Engineer, Nov 2025. SimStar Asia Ltd, Software Engineer II, Dec 2025 to present." width="100%"/>
 
 <details>
 <summary><b>What I delivered at each company</b></summary>
@@ -34,8 +34,14 @@ I build booking, payments and healthtech platforms end to end, from API design t
 - 25% faster API responses by optimizing PostgreSQL queries.
 - Third-party API integrations and end-to-end features with React.js teams; Docker, CI/CD and production support.
 
+**Neosoft Pvt Ltd, Senior Software Engineer (Nov 2025)**
+- Backend work with FastAPI.
+
 **Serioton LLP (HAANAA), Software Engineer I (Jul to Aug 2025)**
 - React Native modules for Real Money Gaming platforms, with MobX keeping real-time gameplay state in sync across clients.
+
+**Codilar Technologies Pvt Ltd, Lead Software Engineer (May to Jun 2025)**
+- React Native work on the UAE LuLu Hypermarket app, including deep linking integration.
 
 **Techibears Pvt Ltd, Senior Software Developer (Feb 2020 to Apr 2025)**
 - Led 6+ production platforms in sports booking, healthtech and gaming, including Players Turf, Pi-Play, Just Padel and VirtuScreening.
