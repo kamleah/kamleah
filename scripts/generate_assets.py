@@ -16,7 +16,7 @@ OUT = Path(__file__).resolve().parent.parent / "assets"
 STATIC = "--static" in sys.argv
 
 # ---------------------------------------------------------------- content
-NAME = "Gupta Kamlesh Shubhnarayan"
+NAME = "Kamlesh Gupta"
 TITLE = "Full-Stack Software Engineer"
 CURRENT = "Software Engineer II at SimStar Asia"
 ROTATING = [
@@ -32,9 +32,11 @@ STATS = [
     ("3", ["payment gateways", "integrated"]),
 ]
 # (label, start year fraction, end year fraction) on a 2020..2027 axis
-TECHIBEARS = (2020.08, 2025.33)
-SERIOTON = (2025.5, 2025.67)
-SIMSTAR = (2025.92, 2026.83)
+TECHIBEARS = (2020.09, 2025.33)   # 04 Feb 2020 to 30 Apr 2025
+CODILAR = (2025.40, 2025.50)      # 26 May to 30 Jun 2025
+SERIOTON = (2025.57, 2025.64)     # 28 Jul to 22 Aug 2025
+NEOSOFT = (2025.85, 2025.91)      # 07 to 30 Nov 2025
+SIMSTAR = (2025.94, 2026.83)      # 09 Dec 2025 to present
 
 PROJECTS = [
     dict(file="card-pi-play", name="Pi-Play", cat="Sports tech", tagline="Multi-city padel and pickleball booking",
@@ -186,8 +188,8 @@ def timeline() -> str:
         f'<text x="{X(y):.1f}" y="198" text-anchor="middle" font-size="13" fill="{MUTED}">{y}</text>'
         for y in range(y0, y1 + 1)
     )
-    tb, sr, ss = X(TECHIBEARS[0]), X(SERIOTON[0]), X(SIMSTAR[0])
-    tb_w, sr_w, ss_w = X(TECHIBEARS[1]) - tb, X(SERIOTON[1]) - sr, X(SIMSTAR[1]) - ss
+    tb, ss = X(TECHIBEARS[0]), X(SIMSTAR[0])
+    tb_w, ss_w = X(TECHIBEARS[1]) - tb, X(SIMSTAR[1]) - ss
     css = (
         "@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}"
         ".bar{transform-box:fill-box;transform-origin:left center;animation:grow 1.1s cubic-bezier(.2,.7,.2,1) both}"
@@ -195,9 +197,23 @@ def timeline() -> str:
         ".ping{transform-box:fill-box;transform-origin:center;animation:ping 2s ease-out infinite}"
         + FADE_CSS
     )
+    small = [
+        (CODILAR, "Codilar Technologies, Lead Software Engineer, May to Jun 2025", 226, 1.1),
+        (SERIOTON, "Serioton LLP (HAANAA), Software Engineer I, Jul to Aug 2025", 248, 1.3),
+        (NEOSOFT, "Neosoft Pvt Ltd, Senior Software Engineer, Nov 2025", 270, 1.5),
+    ]
+    marks = []
+    for (a, b), label, ly, d in small:
+        x, w = X(a), max(X(b) - X(a), 7)
+        cx = x + w / 2
+        marks.append(
+            f'<rect class="bar" style="animation-delay:{d}s" x="{x:.1f}" y="118" width="{w:.1f}" height="36" rx="4" fill="{SOFT}"/>'
+            f'<line x1="{cx:.1f}" y1="154" x2="{cx:.1f}" y2="{ly - 12}" stroke="#3A4663" stroke-dasharray="3 3"/>'
+            f'<text class="fade" style="animation-delay:{d + 0.2}s" x="{cx + 4:.1f}" y="{ly}" text-anchor="end" font-size="13" fill="{SOFT}">{escape(label)}</text>'
+        )
     body = f"""
-<rect width="1000" height="270" rx="26" fill="url(#bg)"/>
-<rect x="0.5" y="0.5" width="999" height="269" rx="25.5" fill="none" stroke="#fff" stroke-opacity="0.12"/>
+<rect width="1000" height="296" rx="26" fill="url(#bg)"/>
+<rect x="0.5" y="0.5" width="999" height="295" rx="25.5" fill="none" stroke="#fff" stroke-opacity="0.12"/>
 <line x1="{x0}" y1="170" x2="{x1}" y2="170" stroke="#3A4663" stroke-width="2"/>
 {ticks}
 <g class="fade" style="animation-delay:.2s">
@@ -206,18 +222,16 @@ def timeline() -> str:
 <text x="{tb:.0f}" y="92" font-size="13" fill="{MUTED}">Feb 2020 to Apr 2025</text></g>
 <rect class="bar" style="animation-delay:.3s" x="{tb:.1f}" y="118" width="{tb_w:.1f}" height="36" rx="12" fill="{ACCENT}"/>
 <text class="fade" style="animation-delay:.9s" x="{tb + 18:.0f}" y="141" font-size="14" font-weight="600" fill="#0A0F1F">6+ production platforms: sports tech, healthtech, gaming</text>
-<rect class="bar" style="animation-delay:1.1s" x="{sr:.1f}" y="118" width="{max(sr_w, 8):.1f}" height="36" rx="8" fill="{SOFT}"/>
-<line x1="{sr + sr_w / 2:.1f}" y1="154" x2="{sr + sr_w / 2:.1f}" y2="226" stroke="#3A4663" stroke-dasharray="3 3"/>
-<text class="fade" style="animation-delay:1.3s" x="{sr + sr_w / 2:.0f}" y="246" text-anchor="middle" font-size="13" fill="{SOFT}">Serioton LLP (HAANAA), Software Engineer I, Jul to Aug 2025</text>
+{''.join(marks)}
 <g class="fade" style="animation-delay:.6s" text-anchor="end">
 <text x="{X(SIMSTAR[1]):.0f}" y="48" font-size="19" font-weight="700" fill="{INK}">SimStar Asia Ltd</text>
 <text x="{X(SIMSTAR[1]):.0f}" y="70" font-size="14.5" fill="{SOFT}">Software Engineer II</text>
 <text x="{X(SIMSTAR[1]):.0f}" y="92" font-size="13" fill="{MUTED}">Dec 2025 to present</text></g>
-<rect class="bar" style="animation-delay:1.5s" x="{ss:.1f}" y="118" width="{ss_w:.1f}" height="36" rx="12" fill="{BALL}"/>
+<rect class="bar" style="animation-delay:1.7s" x="{ss:.1f}" y="118" width="{ss_w:.1f}" height="36" rx="12" fill="{BALL}"/>
 <circle class="ping" cx="{ss + ss_w:.1f}" cy="136" r="6" fill="{BALL}"/>
 <circle cx="{ss + ss_w:.1f}" cy="136" r="6" fill="{BALL}"/>
 """
-    return svg(1000, 270, body, css, "Career timeline from 2020 to 2026")
+    return svg(1000, 296, body, css, "Career timeline from 2020 to 2026")
 
 
 # ---------------------------------------------------------------- section headers
