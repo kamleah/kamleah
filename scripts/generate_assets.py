@@ -16,7 +16,7 @@ OUT = Path(__file__).resolve().parent.parent / "assets"
 STATIC = "--static" in sys.argv
 
 # ---------------------------------------------------------------- content
-NAME = "Kamlesh Gupta"
+NAME = "Gupta Kamlesh Shubhnarayan"
 TITLE = "Full-Stack Software Engineer"
 CURRENT = "Software Engineer II at SimStar Asia"
 ROTATING = [
